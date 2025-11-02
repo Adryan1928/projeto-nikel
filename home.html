@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikel - Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body id="app">
+    <header>
+        <nav class="navbar navbar-expand bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand mx-5" href="#">
+                    <img src="./assets/images/nikel-small-logo.png" alt="logo-nikel">
+                </a>
+                <div class="collapse navbar-collapse d-flex justify-content-end mx-5" id="navbarNav">
+                    <ul class="navbar-nav gap-3 d-flex justify-content-center align-items-center">
+                        <li class="nav-item">
+                            <a href="home.html"><i class="bi bi-house-door-fill fs-4"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="transactions.html"><i class="bi bi-currency-exchange fs-4 color-black"></i></a>
+                        </li>
+                        <li>
+                            <div class="dropdown">
+                                <a class="btn fs-4"data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-person-circle fs-4 color-black"></i>
+                                </a>
+                                <ul class="dropdown-menu logout">
+                                    <li><button class="dropdown-item" id="button-sair">Sair</button></li>
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container-lg">
+            <div class="row my-5">
+                <div class="col d-flex justify-content-start align-items-center">
+                    <i class="bi bi-cash-coin color-black icon-detail"></i>
+                    <span class="fs-2" id="valores-totais">
+                    </span>
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <img src="./assets/images/coins-small.png" alt="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="container">
+                        <div class="row table-header">
+                            <div class="col-6">
+                                <div class="fs-4">
+                                    <p class="d-flex align-items-center justify-content-start gap-1">Entradas<i class="bi bi-arrow-down-circle fs-4 color-black"></i></p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="fs-4">
+                                    <p class="d-flex align-items-center justify-content-start gap-1">Saidas<i class="bi bi-arrow-up-circle fs-4 color-black"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="container">
+                            <div class="row table-value">
+                                <div class="col-6 fs-4" id="cashInList">
+
+                                </div>
+                                <div class="col-6 fs-4" id="cashOutList">
+                                    
+                                </div>
+                            </div> 
+                        </div> 
+                    </div>
+                </div>  
+                <div class="col-12">
+                    <button class="ver-todas-btn" id="transactions-button" type="button">Ver todas</button>
+                </div>
+            </div>
+            <button class="btn-plus" data-bs-toggle="modal" data-bs-target="#transactionModal">
+                <i class="bi bi-plus fs-4"></i>
+            </button>
+        </div>
+        
+
+
+        <!-- MODAL -->
+        <div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
+            <form id="transaction-form">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="transactionModalLabel">Adicionar Lançamento</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="transactionInputValor1" class="form-label">Valor</label>
+                                <input type="number" step="any" required class="form-control" id="transactionInputValor1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="transactionInputDescricao1" class="form-label">Descrição</label>
+                                <input type="text" required class="form-control" id="transactionInputDescricao1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="transactionInputDate1" class="form-label">Data</label>
+                                <input type="date" required class="form-control" id="transactionInputDate1">
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="type-input" id="inlineRadio1" value="entrada" checked>
+                                <label class="form-check-label" for="inlineRadio1">Entrada</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="type-input" id="inlineRadio2" value="saida">
+                                <label class="form-check-label" for="inlineRadio2">Saida</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="ver-todas-btn" style="background: gray;" onmouseover="this.style.backgroundColor='#444444';" onmouseout="this.style.backgroundColor='gray';" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="ver-todas-btn">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="./js/home.js"></script>
+</body>
+</html>
